@@ -39,5 +39,21 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 );
 
 Checkbox.displayName = "Checkbox";
+interface FormCheckboxProps extends CheckboxProps {
+  registration?: any;
+}
 
+export const FormCheckbox = forwardRef<HTMLInputElement, FormCheckboxProps>(
+  ({ registration, name, ...props }, ref) => {
+    return (
+      <Checkbox
+        ref={ref}
+        {...(registration && name ? registration(name) : {})}
+        {...props}
+      />
+    );
+  },
+);
+
+FormCheckbox.displayName = "FormCheckbox";
 export default Checkbox;

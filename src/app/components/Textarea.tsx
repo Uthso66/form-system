@@ -42,5 +42,21 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 );
 
 Textarea.displayName = "Textarea";
+interface FormTextareaProps extends TextareaProps {
+  registration?: any;
+}
 
+export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
+  ({ registration, name, ...props }, ref) => {
+    return (
+      <Textarea
+        ref={ref}
+        {...(registration && name ? registration(name) : {})}
+        {...props}
+      />
+    );
+  },
+);
+
+FormTextarea.displayName = "FormTextarea";
 export default Textarea;

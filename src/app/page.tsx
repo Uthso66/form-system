@@ -1,9 +1,9 @@
 "use client";
-import Input from "./components/Input";
-import Textarea from "./components/Textarea";
-import Select from "./components/Select";
-import Checkbox from "./components/Checkbox";
-
+import Input, { FormInput } from "./components/Input";
+import Textarea, { FormTextarea } from "./components/Textarea";
+import Select, { FormSelect } from "./components/Select";
+import Checkbox, { FormCheckbox } from "./components/Checkbox";
+import ValidationDemo from "./components/ValidationDemo";
 export default function Home() {
   const countryOptions = [
     { value: "us", label: "United States" },
@@ -27,7 +27,6 @@ export default function Home() {
       <p className="text-gray-600 mb-12">
         Building a reusable form library with validation
       </p>
-
       {/* FORM DEMO SECTION */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl">
         {/* Left Column: Input Tests */}
@@ -137,9 +136,7 @@ export default function Home() {
             <div className="pt-4">
               <button
                 type="submit"
-                className="w-full py-3 bg-blue-600 text-white font-medium rounded-lg
-                         hover:bg-blue-700 transition-colors duration-200
-                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               >
                 Submit Form
               </button>
@@ -147,7 +144,6 @@ export default function Home() {
           </form>
         </div>
       </div>
-
       {/* QUICK TIPS */}
       <div className="mt-8 bg-blue-50 p-6 rounded-xl max-w-6xl">
         <h3 className="font-medium text-blue-900 mb-3">
@@ -165,6 +161,15 @@ export default function Home() {
           </li>
           <li className="flex items-center gap-2">✅ Required field support</li>
         </ul>
+      </div>
+      // ... (keep existing imports and code) // Add this NEW SECTION after the
+      existing form
+      <div className="mt-8 bg-white p-8 rounded-xl shadow-sm max-w-4xl">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+          🛡️ Form with Zod Validation
+        </h2>
+
+        <ValidationDemo />
       </div>
     </main>
   );

@@ -64,5 +64,21 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
 );
 
 Select.displayName = "Select";
+interface FormSelectProps extends SelectProps {
+  registration?: any;
+}
 
+export const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
+  ({ registration, name, ...props }, ref) => {
+    return (
+      <Select
+        ref={ref}
+        {...(registration && name ? registration(name) : {})}
+        {...props}
+      />
+    );
+  },
+);
+
+FormSelect.displayName = "FormSelect";
 export default Select;

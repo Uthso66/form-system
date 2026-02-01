@@ -33,5 +33,24 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 );
 
 Input.displayName = "Input";
+// Add these interfaces near top
+interface FormInputProps extends InputProps {
+  registration?: any; // react-hook-form's register function
+}
+
+// New wrapper component for react-hook-form
+export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
+  ({ registration, name, ...props }, ref) => {
+    return (
+      <Input
+        ref={ref}
+        {...(registration && name ? registration(name) : {})}
+        {...props}
+      />
+    );
+  },
+);
+
+FormInput.displayName = "FormInput";
 
 export default Input;
